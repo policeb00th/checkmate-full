@@ -5,3 +5,4 @@ basic-app/node_modules
 cm
 output
 glove.6B.100d.tar.xz
+server.py
