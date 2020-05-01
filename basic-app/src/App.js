@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       selectedFile: null,
       loaded: 0,
-      Summary:null
+      Summary: null
     }
 
   }
@@ -81,18 +81,18 @@ class App extends Component {
         this.setState({
           loaded: (ProgressEvent.loaded / ProgressEvent.total * 100),
         })
-        this.setState({Summary:"Loading"})
+        this.setState({ Summary: ["Loading...... \n This make take upto 30 seconds"] })
       },
     })
       .then(res => { // then print response status
         toast.success('upload success')
         this.setState({
-          Summary:res.data
+          Summary: res.data.split(/[\\.!\?]/)
         })
       })
       .catch(err => { // then print response status
         toast.error('upload fail')
-        this.setState({Summary:null})
+        this.setState({ Summary: null })
       })
   }
 
@@ -101,7 +101,7 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="offset-md-3 col-md-6">
-          <label style={{fontSize:"48px",fontWeight:500}}>Text Summarizer </label>
+            <label style={{ fontSize: "48px", fontWeight: 500 }}>Terms and Conditions Summarizer </label>
             <div className="form-group files">
               <input type="file" className="form-control" multiple onChange={this.onChangeHandler} />
             </div>
@@ -111,14 +111,15 @@ class App extends Component {
 
             </div>
 
-            <button type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
-
+            <button type="button" disabled={!this.state.selectedFile} className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
+            {!!this.state.Summary && <div style={{
+              display: "block",
+              marginTop:"12px"
+            }}><h1>Keypoints</h1>{this.state.Summary.map((option,index)=>(
+              <p key={option}>{option}</p>
+            ))}</div>}
           </div>
         </div>
-        {!! this.state.Summary && <div style={{
-          display: "block",
-          textAlign: "center",
-        }}><h1>Summary</h1><p>{this.state.Summary}</p></div>}
       </div>
     );
   }
