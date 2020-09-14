@@ -5,7 +5,7 @@ Python 3.5 and above, NodeJs and pip3.
 
 ## **First time Setup**
 Clone the directory.
-After cloning please make sure to download the "Glove.6B.100d.txt" from [here](https://drive.google.com/open?id=1UM4j5uXqVB4QSARR1hqPM7jwFo-A7fA3)
+After cloning please make sure to download the "Glove.6B.100d.txt" from [here](https://www.kaggle.com/danielwillgeorge/glove6b100dtxt)
 
 Place the file in the root folder.
 
